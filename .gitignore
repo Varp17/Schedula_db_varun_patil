@@ -1,0 +1,34 @@
+# compiled output
+/dist
+/node_modules
+
+# environment variables
+.env
+.env.test
+.env.production
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE folders
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# test coverage
+/coverage
+
+# temporary files
+*.tsbuildinfo
+*.log
+
+# lock files (optional, if not used consistently)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
