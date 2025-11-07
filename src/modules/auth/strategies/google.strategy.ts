@@ -34,6 +34,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
         process.env.NODE_ENV === 'development'
           ? 'http://localhost:3000/api/v1/auth/google/callback'
           : configService.get('GOOGLE_CALLBACK_URL'),
+
       scope: ['email', 'profile'],
       passReqToCallback: true,
     });
