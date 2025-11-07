@@ -21,6 +21,9 @@ import { DoctorsModule } from './modules/doctors/doctors.module';
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
         url: configService.get('DATABASE_URL'),
+        ssl: {
+          rejectUnauthorized: false, // This is important for Render
+        },
         entities: [__dirname + '/**/*.entity{.ts,.js}'],
         synchronize: configService.get('NODE_ENV') !== 'production',
         logging: configService.get('NODE_ENV') === 'development',
