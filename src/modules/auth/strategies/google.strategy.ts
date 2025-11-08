@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/require-await */
 
 import { PassportStrategy } from '@nestjs/passport';
@@ -41,7 +42,7 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
   }
 
   async validate(
-    req: GoogleAuthRequest,
+    req: Request,
     accessToken: string,
     refreshToken: string,
     profile: GoogleProfile,
