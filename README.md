@@ -1,9 +1,3 @@
-Here’s a **ready-to-paste `README.md`** file for your GitHub repository — complete, professional, and optimized for recruiters, developers, and your Loom walkthrough video.
-It explains your **Schedula Backend**, all **deployed Render API endpoints**, and includes a section for your **Loom demo** link.
-
----
-
-```markdown
 # 🩺 Schedula — Smart Appointment & Healthcare Backend API
 
 A fully deployed RESTful backend built for **Schedula**, a healthcare scheduling platform connecting **patients** and **doctors** through secure authentication, real-time OTP verification, and support ticket management.  
@@ -12,7 +6,6 @@ This backend is deployed on **Render** with **PostgreSQL**, **JWT Authentication
 ---
 
 ## 🌐 Base URL
-```
 
 [https://schedula-db-varun-patil.onrender.com](https://schedula-db-varun-patil.onrender.com)
 
@@ -31,14 +24,13 @@ All endpoints are live and ready for testing via **cURL**, **Postman**, or **fro
 - 🧪 Public Render Deployment for Live Testing
 
 ---
-
+````
 ## 📘 API ENDPOINTS OVERVIEW
 
 ### 1️⃣ Health & Status
 | Method | Endpoint | Description | Auth |
 |--------|-----------|-------------|------|
 | GET | `/api/v1/auth/health` | Server uptime and DB status | ❌ |
-
 ---
 
 ### 2️⃣ Authentication
@@ -90,14 +82,15 @@ All endpoints are live and ready for testing via **cURL**, **Postman**, or **fro
 | GET | `/api/v1/support/tickets/:id` | Get specific ticket | ✅ |
 
 ---
-
+````
 ## 🧪 Example API Calls (Try Directly)
 
 ### Health Check
 ```bash
 curl https://schedula-db-varun-patil.onrender.com/api/v1/auth/health
 ````
-
+````
+````
 ### Signup
 
 ```bash
@@ -273,7 +266,7 @@ Schedula-Backend/
 ## 🎥 Loom Video Demonstration
 
 📹 **Watch Full API Demo** — Signup, Login, Doctor Verification, and Support Flow:
-👉 [https://www.loom.com/share/YOUR-LOOM-VIDEO-LINK](https://www.loom.com/share/YOUR-LOOM-VIDEO-LINK)
+
 
 ---
 
@@ -290,7 +283,7 @@ Schedula-Backend/
 ## 🪪 Author
 
 **Varun Patil**
-📧 [varunpatil.dev@example.com](mailto:varunpatil.dev@example.com)
+📧 [varunpatil.dev@example.com](mailto:varunpatil0217@gmail.com)
 🚀 Backend Developer | Java + Node.js | AI & Scalable Systems
 
 ---
@@ -302,11 +295,3 @@ MIT © 2025 Varun Patil
 ```
 
 ---
-
-✅ **Next steps for you:**
-1. Replace `YOUR_JWT_TOKEN` with a real token from `/signin`.  
-2. Replace the placeholder Loom URL with your actual video link after recording the live Render test.  
-3. Commit this file as `README.md` in your GitHub root — it’s ready for public showcase and portfolio use.  
-
-Would you like me to generate a **Postman Collection JSON file** (`Schedula Render.postman_collection.json`) that includes all these endpoints preconfigured for import?
-```
