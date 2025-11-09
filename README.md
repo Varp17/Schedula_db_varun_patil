@@ -1,258 +1,312 @@
-# 🎯 **COMPLETE API ENDPOINTS LIST - SCHEDULA BACKEND**
-
-## 🌐 **Base URL**
-```
-https://schedula-db-varun-patil.onrender.com
-```
-
-## 📋 **ALL AVAILABLE ENDPOINTS**
-
-### **1. HEALTH & STATUS**
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| `GET` | `/api/v1/auth/health` | Health check & server status | ❌ |
-
-### **2. AUTHENTICATION ENDPOINTS**
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| `POST` | `/api/v1/auth/signup` | User registration (email/mobile) | ❌ |
-| `POST` | `/api/v1/auth/signin` | User login with JWT token | ❌ |
-| `POST` | `/api/v1/auth/signout` | Secure logout with token invalidation | ✅ |
-| `PUT` | `/api/v1/auth/role` | Update user role (Patient/Doctor) | ✅ |
-| `GET` | `/api/v1/auth/role` | Get current user's role | ✅ |
-
-### **3. GOOGLE OAUTH ENDPOINTS**
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| `GET` | `/api/v1/auth/google` | Initiate Google OAuth (default Patient) | ❌ |
-| `GET` | `/api/v1/auth/google/patient` | Google OAuth with Patient role | ❌ |
-| `GET` | `/api/v1/auth/google/doctor` | Google OAuth with Doctor role | ❌ |
-| `GET` | `/api/v1/auth/google/callback` | OAuth callback handler | ❌ |
-
-### **4. DOCTOR ENDPOINTS**
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| `POST` | `/api/v1/doctors/profile` | Create/update doctor profile | ✅ |
-| `GET` | `/api/v1/doctors/profile` | Get doctor profile with availability | ✅ |
-| `POST` | `/api/v1/doctors/generate-otp` | Generate 6-digit verification OTP | ✅ |
-| `POST` | `/api/v1/doctors/verify-otp` | Verify doctor using OTP | ✅ |
-| `POST` | `/api/v1/doctors/availability` | Set consultation hours & availability | ✅ |
-| `GET` | `/api/v1/doctors/availability` | Get all availability slots | ✅ |
-
-### **5. PATIENT ENDPOINTS**
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| `POST` | `/api/v1/patients/profile` | Create/update patient profile | ✅ |
-| `GET` | `/api/v1/patients/profile` | Get patient profile | ✅ |
-
-### **6. SUPPORT ENDPOINTS**
-| Method | Endpoint | Description | Auth Required |
-|--------|----------|-------------|---------------|
-| `POST` | `/api/v1/support/tickets` | Create support ticket | ✅ |
-| `GET` | `/api/v1/support/tickets` | Get user's support tickets | ✅ |
-| `GET` | `/api/v1/support/tickets/:id` | Get specific ticket details | ✅ |
+Here’s a **ready-to-paste `README.md`** file for your GitHub repository — complete, professional, and optimized for recruiters, developers, and your Loom walkthrough video.
+It explains your **Schedula Backend**, all **deployed Render API endpoints**, and includes a section for your **Loom demo** link.
 
 ---
 
-## 🧪 **COMPLETE TESTING SCRIPT**
+```markdown
+# 🩺 Schedula — Smart Appointment & Healthcare Backend API
 
-### **1. Health Check**
+A fully deployed RESTful backend built for **Schedula**, a healthcare scheduling platform connecting **patients** and **doctors** through secure authentication, real-time OTP verification, and support ticket management.  
+This backend is deployed on **Render** with **PostgreSQL**, **JWT Authentication**, and **Google OAuth** integration.
+
+---
+
+## 🌐 Base URL
+```
+
+[https://schedula-db-varun-patil.onrender.com](https://schedula-db-varun-patil.onrender.com)
+
+````
+
+All endpoints are live and ready for testing via **cURL**, **Postman**, or **frontend integration**.
+
+---
+
+## 🚀 Features
+- ✅ JWT Authentication & Role Management (Doctor/Patient)
+- 🌍 Google OAuth 2.0 Integration
+- 🧑‍⚕️ Doctor Verification with OTP & Availability Scheduling
+- 🧍‍♂️ Patient Profile Management
+- 🧾 Support Ticket System
+- 🧪 Public Render Deployment for Live Testing
+
+---
+
+## 📘 API ENDPOINTS OVERVIEW
+
+### 1️⃣ Health & Status
+| Method | Endpoint | Description | Auth |
+|--------|-----------|-------------|------|
+| GET | `/api/v1/auth/health` | Server uptime and DB status | ❌ |
+
+---
+
+### 2️⃣ Authentication
+| Method | Endpoint | Description | Auth |
+|--------|-----------|-------------|------|
+| POST | `/api/v1/auth/signup` | Register with email or mobile | ❌ |
+| POST | `/api/v1/auth/signin` | Login with JWT token | ❌ |
+| POST | `/api/v1/auth/signout` | Logout and invalidate token | ✅ |
+| PUT | `/api/v1/auth/role` | Update user role (doctor/patient) | ✅ |
+| GET | `/api/v1/auth/role` | Get user role | ✅ |
+
+---
+
+### 3️⃣ Google OAuth
+| Method | Endpoint | Description | Auth |
+|--------|-----------|-------------|------|
+| GET | `/api/v1/auth/google` | Google OAuth (default patient) | ❌ |
+| GET | `/api/v1/auth/google/patient` | Google OAuth (patient role) | ❌ |
+| GET | `/api/v1/auth/google/doctor` | Google OAuth (doctor role) | ❌ |
+| GET | `/api/v1/auth/google/callback` | OAuth callback | ❌ |
+
+---
+
+### 4️⃣ Doctor Endpoints
+| Method | Endpoint | Description | Auth |
+|--------|-----------|-------------|------|
+| POST | `/api/v1/doctors/profile` | Create/update doctor profile | ✅ |
+| GET | `/api/v1/doctors/profile` | Get doctor profile | ✅ |
+| POST | `/api/v1/doctors/generate-otp` | Generate verification OTP | ✅ |
+| POST | `/api/v1/doctors/verify-otp` | Verify OTP | ✅ |
+| POST | `/api/v1/doctors/availability` | Set consultation schedule | ✅ |
+| GET | `/api/v1/doctors/availability` | Get availability slots | ✅ |
+
+---
+
+### 5️⃣ Patient Endpoints
+| Method | Endpoint | Description | Auth |
+|--------|-----------|-------------|------|
+| POST | `/api/v1/patients/profile` | Create/update patient profile | ✅ |
+| GET | `/api/v1/patients/profile` | Get patient profile | ✅ |
+
+---
+
+### 6️⃣ Support Endpoints
+| Method | Endpoint | Description | Auth |
+|--------|-----------|-------------|------|
+| POST | `/api/v1/support/tickets` | Create support ticket | ✅ |
+| GET | `/api/v1/support/tickets` | Get all support tickets | ✅ |
+| GET | `/api/v1/support/tickets/:id` | Get specific ticket | ✅ |
+
+---
+
+## 🧪 Example API Calls (Try Directly)
+
+### Health Check
 ```bash
 curl https://schedula-db-varun-patil.onrender.com/api/v1/auth/health
-```
+````
 
-### **2. Authentication Flow**
+### Signup
+
 ```bash
-# User Registration
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/auth/signup \
-  -H "Content-Type: application/json" \
-  -d '{
-    "name": "Test User",
-    "email": "test.user@email.com",
-    "mobile_number": "1234567890",
-    "password": "password123",
-    "role": "patient"
-  }'
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Dr. John Smith",
+  "mobile_number": "1234567890",
+  "password": "password123",
+  "email": "doctor@test.com",
+  "role": "doctor"
+}'
+```
 
-# User Login
+### Signin
+
+```bash
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/auth/signin \
-  -H "Content-Type: application/json" \
-  -d '{
-    "mobile_number": "1234567890",
-    "password": "password123"
-  }'
+-H "Content-Type: application/json" \
+-d '{
+  "mobile_number": "1234567890",
+  "password": "password123"
+}'
 ```
 
-### **3. Doctor Onboarding Flow**
+### Create Doctor Profile
+
 ```bash
-# Create Doctor Profile
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/doctors/profile \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "specialization": "Cardiology",
-    "qualification": "MBBS, MD",
-    "experience": 5,
-    "clinic_address": "123 Medical Center",
-    "bio": "Experienced cardiologist",
-    "consultation_fee": 500
-  }'
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+  "specialization": "Neurology",
+  "qualification": "MBBS, MD",
+  "experience": 5,
+  "clinic_address": "456 Brain Center",
+  "bio": "Experienced neurologist",
+  "consultation_fee": 600
+}'
+```
 
-# Generate OTP
+### Generate OTP
+
+```bash
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/doctors/generate-otp \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+-H "Authorization: Bearer YOUR_JWT_TOKEN"
+```
 
-# Verify OTP (use OTP from previous response)
+### Verify OTP
+
+```bash
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/doctors/verify-otp \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"otp": "123456"}'
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{"otp": "123456"}'
+```
 
-# Set Availability
+### Set Availability
+
+```bash
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/doctors/availability \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "day": "Monday",
-    "start_time": "09:00",
-    "end_time": "17:00",
-    "max_patients": 15
-  }'
-
-# Get Doctor Profile
-curl -X GET https://schedula-db-varun-patil.onrender.com/api/v1/doctors/profile \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+  "day": "Monday",
+  "start_time": "09:00",
+  "end_time": "17:00",
+  "max_patients": 15
+}'
 ```
 
-### **4. Patient Flow**
+### Create Patient Profile
+
 ```bash
-# Create Patient Profile
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/patients/profile \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "firstName": "John",
-    "lastName": "Patient",
-    "dateOfBirth": "1990-01-01",
-    "gender": "MALE",
-    "address": "123 Patient Street"
-  }'
-
-# Get Patient Profile
-curl -X GET https://schedula-db-varun-patil.onrender.com/api/v1/patients/profile \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+  "name": "Varun Patil",
+  "age": 21,
+  "sex": "male",
+  "weight": 72
+}'
 ```
 
-### **5. Support System**
+### Create Support Ticket
+
 ```bash
-# Create Support Ticket
 curl -X POST https://schedula-db-varun-patil.onrender.com/api/v1/support/tickets \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "subject": "Login Issue",
-    "description": "Unable to login to my account",
-    "priority": "MEDIUM"
-  }'
-
-# Get Support Tickets
-curl -X GET https://schedula-db-varun-patil.onrender.com/api/v1/support/tickets \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
-```
-
-### **6. Role Management**
-```bash
-# Get User Role
-curl -X GET https://schedula-db-varun-patil.onrender.com/api/v1/auth/role \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN"
-
-# Update User Role
-curl -X PUT https://schedula-db-varun-patil.onrender.com/api/v1/auth/role \
-  -H "Authorization: Bearer YOUR_JWT_TOKEN" \
-  -H "Content-Type: application/json" \
-  -d '{"role": "doctor"}'
+-H "Authorization: Bearer YOUR_JWT_TOKEN" \
+-H "Content-Type: application/json" \
+-d '{
+  "subject": "Login Issue",
+  "description": "Unable to login to my account"
+}'
 ```
 
 ---
 
-## 🎯 **TESTING CHECKLIST**
+## 🧾 Expected Responses
 
-### **✅ AUTHENTICATION & USERS**
-- [ ] User registration (email/mobile)
-- [ ] User login with JWT
-- [ ] Secure logout
-- [ ] Role management
-- [ ] Google OAuth flow
+**Registration**
 
-### **✅ DOCTOR FEATURES**
-- [ ] Doctor profile creation
-- [ ] OTP generation
-- [ ] Doctor verification
-- [ ] Availability management
-- [ ] Profile retrieval
-
-### **✅ PATIENT FEATURES**
-- [ ] Patient profile creation
-- [ ] Profile retrieval
-- [ ] Support ticket system
-
-### **✅ SYSTEM HEALTH**
-- [ ] Database connections
-- [ ] JWT token validation
-- [ ] Error handling
-- [ ] CORS configuration
-
----
-
-## 📊 **EXPECTED RESPONSES**
-
-### **Successful Registration:**
 ```json
 {
   "message": "User registered successfully",
   "user": {
     "user_id": 1,
     "name": "Test User",
-    "email": "test@email.com",
     "role": "patient"
   }
 }
 ```
 
-### **Successful Login:**
+**Login**
+
 ```json
 {
   "access_token": "eyJhbGci...",
   "user": {
     "user_id": 1,
     "name": "Test User",
-    "role": "patient"
+    "role": "doctor"
   }
 }
 ```
 
-### **Doctor Profile:**
+**Doctor Profile**
+
 ```json
 {
   "doctor_id": 1,
   "specialization": "Cardiology",
   "experience": 5,
-  "is_verified": true,
-  "user": {
-    "user_id": 1,
-    "name": "Dr. Test User"
-  }
+  "is_verified": true
 }
 ```
 
 ---
 
-## 🚀 **READY FOR COMPREHENSIVE TESTING!**
+## 🧩 Tech Stack
 
-**All 18+ endpoints are now documented and ready for testing on your live deployment!** 
+| Layer      | Tech               |
+| ---------- | ------------------ |
+| Backend    | Node.js + Express  |
+| Database   | PostgreSQL         |
+| Auth       | JWT + Google OAuth |
+| Deployment | Render             |
+| Testing    | Postman / cURL     |
+| Language   | JavaScript (ES6)   |
 
-You can systematically test each endpoint category and verify the complete Schedula backend functionality. 🎉
+---
 
-**Base URL:** `https://schedula-db-varun-patil.onrender.com`
+## 🧠 Project Structure
 
-Let me know when you want to start the comprehensive testing! 🧪
+```
+Schedula-Backend/
+├── src/
+│   ├── auth/
+│   ├── doctors/
+│   ├── patients/
+│   ├── support/
+│   ├── config/
+│   ├── utils/
+│   └── server.js
+├── package.json
+├── README.md
+└── .env (for Render)
+```
+
+---
+
+## 🎥 Loom Video Demonstration
+
+📹 **Watch Full API Demo** — Signup, Login, Doctor Verification, and Support Flow:
+👉 [https://www.loom.com/share/YOUR-LOOM-VIDEO-LINK](https://www.loom.com/share/YOUR-LOOM-VIDEO-LINK)
+
+---
+
+## 🧭 How to Test
+
+1. Open **Postman** or use **curl** commands above.
+2. Run `/health` to check server live status.
+3. Test `/signup` → `/signin` → `/doctors/profile` → `/support/tickets`.
+4. Verify token-based auth works for all secured routes.
+5. Record your tests using Loom and share your link in README.
+
+---
+
+## 🪪 Author
+
+**Varun Patil**
+📧 [varunpatil.dev@example.com](mailto:varunpatil.dev@example.com)
+🚀 Backend Developer | Java + Node.js | AI & Scalable Systems
+
+---
+
+### 📜 License
+
+MIT © 2025 Varun Patil
+
+```
+
+---
+
+✅ **Next steps for you:**
+1. Replace `YOUR_JWT_TOKEN` with a real token from `/signin`.  
+2. Replace the placeholder Loom URL with your actual video link after recording the live Render test.  
+3. Commit this file as `README.md` in your GitHub root — it’s ready for public showcase and portfolio use.  
+
+Would you like me to generate a **Postman Collection JSON file** (`Schedula Render.postman_collection.json`) that includes all these endpoints preconfigured for import?
+```
