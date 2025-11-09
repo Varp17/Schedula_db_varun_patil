@@ -92,14 +92,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
         console.log('Role from custom header:', selectedRole);
       }
 
-      // Method 3: Final fallback - HARDCODE FOR TESTING
-      if (selectedRole === 'patient') {
-        // TEMPORARY: Force doctor role for testing
-        selectedRole = 'doctor';
-        console.log('TEMPORARY: Using hardcoded doctor role for testing');
-      }
-
-      console.log('Final selected role:', selectedRole);
+      // Remove hardcoded override
+      console.log('Final selected role (no override):', selectedRole);
 
       const fullName = `${firstName} ${lastName}`.trim() || email.split('@')[0];
 
