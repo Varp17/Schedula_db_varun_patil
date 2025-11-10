@@ -1,14 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import {
   Entity,
   PrimaryGeneratedColumn,
   Column,
   ManyToOne,
   JoinColumn,
-  //OneToMany,
+  OneToMany,
+  CreateDateColumn, // ADD these
+  UpdateDateColumn,
 } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
-//import { Appointment } from '../../appointments/entities/appointment.entity';
+import { Appointment } from '../../doctors/entities/appointment.entity'; // CORRECT import path
 
 @Entity('patients')
 export class Patient {
@@ -33,5 +34,14 @@ export class Patient {
 
   @Column({ type: 'int', nullable: true })
   weight: number;
-  // @OneToMany(() => Appointment, (appointment) => appointment.patient)//   appointments: Appointment[];
+
+  // UNCOMMENT this relation
+  @OneToMany(() => Appointment, (appointment) => appointment.patient)
+  appointments: Appointment[];
+
+  @CreateDateColumn({ type: 'timestamptz' }) // ADD this
+  created_at: Date;
+
+  @UpdateDateColumn({ type: 'timestamptz' }) // ADD this
+  updated_at: Date;
 }

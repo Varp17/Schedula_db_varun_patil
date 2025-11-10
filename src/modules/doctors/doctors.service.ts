@@ -13,6 +13,8 @@ import { User } from '../users/entities/user.entity'; // ✅ Remove unused UserR
 import { CreateDoctorProfileDto } from './dto/create-doctor.dto';
 import { SetAvailabilityDto } from './dto/set-availability.dto';
 import { randomInt } from 'crypto';
+import { Slot } from './entities/slot.entity';
+import { TimeSlot } from './entities/time-slot.entity';
 
 @Injectable()
 export class DoctorsService {
@@ -26,6 +28,10 @@ export class DoctorsService {
     private availabilityRepository: Repository<DoctorAvailability>,
     @InjectRepository(User)
     private userRepository: Repository<User>,
+    @InjectRepository(Slot) // ADD this
+    private slotRepository: Repository<Slot>,
+    @InjectRepository(TimeSlot) // ADD this
+    private timeSlotRepository: Repository<TimeSlot>,
   ) {}
 
   async createProfile(
@@ -194,5 +200,44 @@ export class DoctorsService {
 
     console.log('🔍 Found availability records:', availability);
     return availability;
+  }
+  async findById(id: number): Promise<Doctor> {
+    return this.doctorRepository.findOne({
+      where: { doctor_id: id },
+      relations: ['user', 'slots', 'timeSlots'],
+    });
+  }
+
+  async findAll(): Promise<Doctor[]> {
+    return this.doctorRepository.find({
+      relations: ['user', 'slots', 'timeSlots'],
+      where: { is_verified: true },
+    });
+  }
+
+  // New method for Week 2 slot management
+  async createSlots(
+    doctorId: number,
+    slotsData: { date: string; start_time: string; end_time: string }[],
+  ) {
+    const doctor = await this.doctorRepository.findOne({
+      where: { doctor_id: doctorId },
+    });
+
+    if (!doctor) {
+      throw new NotFoundException('Doctor not found');
+    }
+
+    const slotEntities = slotsData.map((slotData) => {
+      const slot = new Slot();
+      slot.date = slotData.date;
+      slot.start_time = slotData.start_time;
+      slot.end_time = slotData.end_time;
+      slot.doctor = doctor;
+      slot.is_booked = false;
+      return slot;
+    });
+
+    return this.slotRepository.save(slotEntities);
   }
 }

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-return */
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -6,9 +5,11 @@ import {
   CreateDateColumn,
   OneToMany,
   UpdateDateColumn,
+  OneToOne,
 } from 'typeorm';
 import { Patient } from '../../patients/entities/patient.entity';
 import { SupportTicket } from '../../support/entities/support-ticket.entity';
+import { Doctor } from '../../doctors/entities/doctor.entity';
 
 export enum UserRole {
   PATIENT = 'patient',
@@ -65,4 +66,7 @@ export class User {
 
   @OneToMany(() => SupportTicket, (ticket) => ticket.user)
   support_tickets: SupportTicket[];
+
+  @OneToOne(() => Doctor, (doctor) => doctor.user)
+  doctor: Doctor;
 }

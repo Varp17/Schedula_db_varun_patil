@@ -73,7 +73,8 @@ export class GoogleStrategy extends PassportStrategy(Strategy, 'google') {
       console.log('==============================');
 
       // Method 1: Check state parameter (Google OAuth preserves this)
-      if (req.query?.state) {
+      // In the validate method, fix the state checking:
+      if (req.query?.state && typeof req.query.state === 'string') {
         console.log('State parameter found:', req.query.state);
         // If state contains role information, parse it
         if (req.query.state.includes('doctor')) {

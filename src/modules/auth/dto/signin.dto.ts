@@ -1,14 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import {
+  IsMobilePhone,
   IsNotEmpty,
-  IsPhoneNumber,
   IsString,
   MinLength,
 } from 'class-validator';
 
 export class SignInDto {
   @IsNotEmpty()
-  @IsPhoneNumber()
+  @IsMobilePhone(
+    'en-IN',
+    {},
+    { message: 'Mobile number must be a valid Indian phone number' },
+  )
   mobile_number: string;
 
   @IsNotEmpty()

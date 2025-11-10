@@ -9,6 +9,9 @@ import {
 import { User } from '../../users/entities/user.entity';
 import { DoctorAvailability } from './availability.entity';
 import { VerificationToken } from './verification-token.entity';
+import { Slot } from './slot.entity';
+import { TimeSlot } from './time-slot.entity';
+import { Appointment } from './appointment.entity';
 
 @Entity('doctors')
 export class Doctor {
@@ -45,4 +48,13 @@ export class Doctor {
 
   @OneToMany(() => VerificationToken, (token) => token.doctor)
   verification_tokens: VerificationToken[];
+
+  @OneToMany(() => Slot, (slot) => slot.doctor)
+  slots: Slot[];
+
+  @OneToMany(() => TimeSlot, (timeSlot) => timeSlot.doctor)
+  timeSlots: TimeSlot[];
+
+  @OneToMany(() => Appointment, (appointment) => appointment.doctor)
+  appointments: Appointment[];
 }

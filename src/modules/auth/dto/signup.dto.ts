@@ -1,10 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 import {
   IsEmail,
   IsEnum,
+  IsMobilePhone,
   IsNotEmpty,
   IsOptional,
-  IsPhoneNumber,
   IsString,
   MinLength,
 } from 'class-validator';
@@ -16,7 +15,11 @@ export class SignUpDto {
   name: string;
 
   @IsNotEmpty()
-  @IsPhoneNumber()
+  @IsMobilePhone(
+    'en-IN',
+    {},
+    { message: 'Mobile number must be a valid Indian phone number' },
+  )
   mobile_number: string;
 
   @IsOptional()

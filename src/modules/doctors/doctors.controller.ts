@@ -5,12 +5,14 @@ import {
   Body,
   UseGuards,
   Request,
+  Param,
 } from '@nestjs/common';
 import { DoctorsService } from './doctors.service';
 import { CreateDoctorProfileDto } from './dto/create-doctor.dto';
 import { SetAvailabilityDto } from './dto/set-availability.dto';
 import { VerifyOtpDto } from './dto/verify-otp.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { Doctor } from './entities/doctor.entity';
 
 interface AuthenticatedRequest extends Request {
   user: {
@@ -23,7 +25,7 @@ interface AuthenticatedRequest extends Request {
 
 @Controller('doctors')
 export class DoctorsController {
-  constructor(private readonly doctorsService: DoctorsService) {}
+  constructor(private readonly doctorsService: DoctorsService) {} // FIX: Remove duplicate doctorService
 
   private getUserId(req: AuthenticatedRequest): number {
     console.log('🔍 JWT User object:', req.user); // DEBUG
@@ -33,6 +35,10 @@ export class DoctorsController {
     // ✅ Priority: user_id first, then sub
     const userId = req.user.user_id || req.user.sub;
     console.log('🔍 Extracted User ID:', userId); // DEBUG
+
+    if (!userId) {
+      throw new Error('User ID not found in JWT token');
+    }
 
     return userId;
   }
@@ -94,5 +100,16 @@ export class DoctorsController {
     const userId = this.getUserId(req);
     console.log('🎯 Getting availability for user ID:', userId); // DEBUG
     return this.doctorsService.getAvailability(userId);
+  }
+
+  // PUBLIC ENDPOINTS - No JWT guard for patients to view doctors
+  @Get()
+  async getAllDoctors(): Promise<Doctor[]> {
+    return await this.doctorsService.findAll(); // FIX: Use doctorsService (not doctorService)
+  }
+
+  @Get(':id')
+  async getDoctor(@Param('id') id: number): Promise<Doctor> {
+    return await this.doctorsService.findById(id); // FIX: Use doctorsService (not doctorService)
   }
 }
